@@ -3,7 +3,6 @@ import requests
 import os
 from telebot.types import Message
 
-# Use environment variables for deployment
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 IMGBB_API_KEY = os.getenv('IMGBB_API_KEY')
 
@@ -21,7 +20,7 @@ def handle_image_request(message: Message):
 def handle_photo(message: Message):
     bot.reply_to(message, "⏳ Uploading...")
     
-    photo = message.photo[-1]  # Highest resolution
+    photo = message.photo[-1]
     file_info = bot.get_file(photo.file_id)
     file_url = f"https://api.telegram.org/file/bot{BOT_TOKEN}/{file_info.file_path}"
     
@@ -38,9 +37,11 @@ def handle_photo(message: Message):
         data = imgbb_response.json()
         if data.get('success'):
             link = data['data']['url']
-            bot.reply_to(message, f"📁 *Your Image Uploaded to ImgBB!*
+            # Fixed: Use triple quotes for multiline f-string
+            success_msg = f"""📁 *Your Image Uploaded to ImgBB!*
 
-🔗 [Open Link]({link})", 
+🔗 [Open Link]({link})"""
+            bot.reply_to(message, success_msg, 
                         parse_mode='Markdown', disable_web_page_preview=True)
         else:
             bot.reply_to(message, f"❌ ImgBB error: {data.get('error', 'Unknown')}")
