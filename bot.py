@@ -40,9 +40,9 @@ def handle_photo(message: Message):
             # Fixed: Use triple quotes for multiline f-string
             success_msg = f"""📁 *Your Image Uploaded to ImgBB!*
 
-🔗 [Open Link]({link})"""
+{link}"""
             bot.reply_to(message, success_msg, 
-                        parse_mode='Markdown', disable_web_page_preview=True)
+                        parse_mode='Markdown', disable_web_page_preview=False)
         else:
             bot.reply_to(message, f"❌ ImgBB error: {data.get('error', 'Unknown')}")
     else:
