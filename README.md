@@ -19,6 +19,12 @@ Telegram bot that uploads your photos to ImgBB and returns direct links.
 - **Heroku**: `git push heroku main` [app.json]
 - **Docker**: `docker build -t bot . && docker run -e BOT_TOKEN=... bot`
 
+─「 ᴅᴇᴩʟᴏʏ ᴏɴ ʀᴇɴᴅᴇʀ 」─
+</h3>
+<p><a href="https://render.com/deploy?repo=https://github.com/Harshithmutyala/Imgbb">
+<img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
+</a></p>
+
 ## requirements.txt
 
 pyTelegramBotAPI
