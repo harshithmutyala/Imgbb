@@ -1,5 +1,6 @@
 services:
   - type: web
+    plan: free
     name: imgbb-uploader-bot
     env: python
     buildCommand: pip install -r requirements.txt
@@ -9,4 +10,3 @@ services:
         sync: false
       - key: IMGBB_API_KEY
         sync: false
-    autoDeploy: true
